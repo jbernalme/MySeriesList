@@ -16,6 +16,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 # Instalar extensiones de PHP necesarias
 RUN docker-php-ext-install \
     pdo \
+    pdo_mysql \
     pdo_pgsql \
     zip \
     bcmath
@@ -28,6 +29,9 @@ WORKDIR /var/www/html
 
 # Copiar archivos del proyecto
 COPY . .
+
+# Crear directorios de storage necesarios
+RUN mkdir -p storage/app/public/img
 
 # Instalar dependencias de PHP (sin dev dependencies)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
@@ -42,13 +46,14 @@ RUN rm -rf node_modules
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-# Cachear configuraciones de Laravel
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
+# NO cachear config aquí - las variables de entorno aún no existen
+# Se hará en el CMD cuando el contenedor arranque
 
 # Exponer puerto
 EXPOSE 8000
 
 # Comando de inicio
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan migrate --force && \
+    php artisan serve --host=0.0.0.0 --port=8000
