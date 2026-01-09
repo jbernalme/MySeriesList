@@ -1,4 +1,4 @@
-import nosignal from "../../../storage/app/public/img/nosignal.gif";
+// import nosignal from "../../../storage/app/public/img/nosignal.gif";
 import GlitchText from "@/Components/GlitchText";
 import TvFrame from "@/Components/TvFrame";
 import { Head } from "@inertiajs/react";
@@ -32,10 +32,10 @@ const Error = ({ status }) => {
             <div className="flex flex-col items-center justify-center gap-4 bg-primary">
                 <div className="flex flex-col items-center text-light">
                     <TvFrame>
-                        <img
+                        {/* <img
                             src={nosignal}
                             alt="Gif animado de television sin señal"
-                        />
+                        /> */}
                     </TvFrame>
 
                     <GlitchText className="text-7xl" text={` ${title}`} />
