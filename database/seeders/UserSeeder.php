@@ -15,26 +15,30 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'name' => 'Jesus David',
-            'username' => 'blueheart',
-            'email' => 'chuchober@hotmail.com',
-            'password' => Hash::make('123456'),
-            'email_verified_at' => Carbon::now()
-        ]);
 
-        User::create([
-            'name' => 'Jacobo',
-            'username' => 'jacobo11',
-            'email' => 'jacobo@hotmail.com',
-            'password' => Hash::make('123456'),
-        ]);
+        // Solo seedear si la tabla está vacía
+        if (User::count() === 0) {
+            User::create([
+                'name' => 'Jesus David',
+                'username' => 'blueheart',
+                'email' => 'chuchober@hotmail.com',
+                'password' => Hash::make('123456'),
+                'email_verified_at' => Carbon::now()
+            ]);
 
-        User::create([
-            'name' => 'Gabriel',
-            'username' => 'gabriel16',
-            'email' => 'gabriel@hotmail.com',
-            'password' => Hash::make('123456'),
-        ]);
+            User::create([
+                'name' => 'Jacobo',
+                'username' => 'jacobo11',
+                'email' => 'jacobo@hotmail.com',
+                'password' => Hash::make('123456'),
+            ]);
+
+            User::create([
+                'name' => 'Gabriel',
+                'username' => 'gabriel16',
+                'email' => 'gabriel@hotmail.com',
+                'password' => Hash::make('123456'),
+            ]);
+        }
     }
 }
