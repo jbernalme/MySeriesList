@@ -15,7 +15,7 @@ class MyListController extends Controller
 {
     public function show($username)
     {
-
+dd($username);
         try {
 
             $user_id = User::where('username', $username)->firstOrFail()->id;
