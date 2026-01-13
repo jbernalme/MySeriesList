@@ -46,7 +46,12 @@ const MyGallery = ({ data, type = "image" }) => {
                     <FsLightbox
                         sourceIndex={currentIndex}
                         toggler={toggler}
-                        sources={getSource(type, data)}
+                        // sources={getSource(type, data)}
+                        sources={[
+                            "https://i.imgur.com/fsyrScY.jpg",
+                            "https://www.youtube.com/watch?v=3nQNiWdeH2Q",
+                            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+                        ]}
                     />
                 </>
             ) : (
