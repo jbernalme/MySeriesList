@@ -15,7 +15,6 @@ class MyListController extends Controller
 {
     public function show($username)
     {
-dd($username);
         try {
 
             $user_id = User::where('username', $username)->firstOrFail()->id;
@@ -32,6 +31,8 @@ dd($username);
                 ->union($tv)
                 // ->orderBy($this->sortField, $this->sortDirection)
                 ->get();
+
+            dump($lists);
         } catch (ModelNotFoundException $e) {
             return Inertia::render('Error', ['status' => 404]);
         }
@@ -39,6 +40,7 @@ dd($username);
         $data = collect(['lists' => $lists])->merge(['stateWatchingList' => $stateWatchingList]);
 
         // Log::debug($data);
+        dump($data);
         return Inertia::render('MyList/Index', ['data' => $data]);
     }
 }
