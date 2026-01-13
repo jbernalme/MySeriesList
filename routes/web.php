@@ -96,7 +96,7 @@ Route::put('/review/{review}', [ReviewController::class, 'update'])->name('revie
 
 
 // Mis Listas
-Route::get('/list/{username}', [MyListController::class, 'show'])->middleware(['auth'])->name('mylist.show');
+Route::get('/list/{username}', [MyListController::class, 'showtest'])->middleware(['auth'])->name('mylist.show');
 
 
 require __DIR__ . '/auth.php';
