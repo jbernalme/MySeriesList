@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import FsLightbox from "fslightbox-react";
 
 const MyGallery = ({ data, type = "image" }) => {
+    console.log("data", data);
     // data example
     // [
     //     {
